@@ -115,7 +115,7 @@ export default {
   data() {
     return {
       pageNum: 1, //页码
-      pageSize: 10, //数量
+      pageSize: 5, //数量
       total: 0,
       provinceName: "", //省份名称
       tableData: [], //列表数据

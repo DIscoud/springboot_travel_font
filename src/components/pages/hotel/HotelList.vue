@@ -1,6 +1,5 @@
 <template>
   <div>
-    酒店信息
     <div>
       <el-card class="box-card" style="width:1600px;margin:20px auto ">
         <div style="margin-left: 5px;margin-bottom:5px">
@@ -68,19 +67,19 @@
         <el-dialog :title="title" :visible.sync="centerDialogVisible" width="35%">
           <el-form ref="form" :model="form" label-width="80px">
             <el-form-item label="酒店名称" prop="htlName">
-              <el-col :span="10">
+              <el-col :span="15">
                 <el-input v-model="form.htlName"></el-input>
               </el-col>
             </el-form-item>
-            <el-form-item label="酒店地址" prop="htlAddress">
-              <el-col :span="10">
+            <el-form-item label="酒店地址" prop="htlAddress" type="textarea">
+              <el-col :span="15">
                 <el-input v-model="form.htlAddress"></el-input>
               </el-col>
             </el-form-item>
             <el-form-item label="酒店照片">
               <!-- <div class="addBrand-container" id="food-add-app" >
                             <div class="container"> -->
-              <el-upload class="avatar-uploader" action="http://localhost:8081/common/upload" :show-file-list="false"
+              <el-upload class="avatar-uploader" action="http://localhost:7948/common/upload" :show-file-list="false"
                 :on-success="handleAvatarSuccess" :before-upload="beforeUpload" ref="upload">
                 <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -124,7 +123,7 @@
     </div>
   </div>
 </template>
-  
+
 <script>
   export default {
       name:'hotelList',
@@ -138,7 +137,7 @@
             snicName:'',//附近景点名称
             title:'',//新增或者修改弹框标题
             centerDialogVisible:false, //新增或者修改弹框
-            imageUrl:'',//照片回显路径        
+            imageUrl:'',//照片回显路径
             form:{
               htlId:'',
               htlName:'',
@@ -161,7 +160,7 @@
                 param:{
                     htlName:this.htlName,
                     snicName:this.snicName
-                    // admUsername:this.admUsername,      
+                    // admUsername:this.admUsername,
                 }
             }).then(res=>{
                 if(res.data.code == 200){
@@ -205,11 +204,11 @@
         },
         //获取照片
         getImage (image) {
-            return `http://localhost:8081/common/download?name=${image}`
+            return `http://localhost:7948/common/download?name=${image}`
         },
         //图片上传
         handleAvatarSuccess (response, file, fileList) {
-            this.imageUrl = `http://localhost:8081/common/download?name=${response.data}`
+            this.imageUrl = `http://localhost:7948/common/download?name=${response.data}`
             this.form.htlImg = response.data
         },
         //图片上传之前验证文件格式
@@ -286,7 +285,7 @@
                 this.form.htlStar = row.htlStar + '';
                 this.form.htlRemark =row.htlRemark;
                 this.form.snicName = row.snicName;
-                this.imageUrl = this.getImage(row.htlImg);   
+                this.imageUrl = this.getImage(row.htlImg);
                 this.sure = true
             })
         },
@@ -305,7 +304,7 @@
                 this.form.htlStar = row.htlStar + '';
                 this.form.htlRemark =row.htlRemark;
                 this.form.snicName = row.snicName;
-                this.imageUrl = this.getImage(row.htlImg);   
+                this.imageUrl = this.getImage(row.htlImg);
                 this.sure = false
             })
         },
@@ -319,12 +318,12 @@
                     }else{
                         this.doSave();
                     }
-                    
+
                 } else {
                     return false;
                 }
             });
-            
+
         },
         doSave(){
             this.$axios.post(this.$httpUrl + '/hotel/save',this.form).then((res)=>{
@@ -358,8 +357,8 @@
         resetRuleForm(formName) {
             this.$nextTick(()=>{
                 this.$refs[formName].resetFields();
-                this.htlName = ''     
-                this.snicName = ''       
+                this.htlName = ''
+                this.snicName = ''
                 this.post();
             })
         },
@@ -368,10 +367,10 @@
         this.post();
         this.scenicsGet();
       }
-  
+
   }
   </script>
-  
+
 <style scoped>
 .avatar-uploader {
   width: 100px;
@@ -381,5 +380,12 @@
 .avatar-uploader img {
   width: 100px;
   height: 100px;
+}
+.el-container.is-vertical {
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    height: 650px !important;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="addBrand-container" id="food-add-app">
         <div class="container">
-            <el-upload class="avatar-uploader" action="http://localhost:8081/common/upload" :show-file-list="false"
+            <el-upload class="avatar-uploader" action="http://localhost:7948/common/upload" :show-file-list="false"
                 :on-success="handleAvatarSuccess" :before-upload="beforeUpload" ref="upload">
                 <img v-if="imageUrl" :src="imageUrl" class="avatar" />
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -20,7 +20,7 @@
         },
         methods: {
           handleAvatarSuccess (response, file, fileList) {
-              this.imageUrl = `http://localhost:8081/common/download?name=${response.data}`
+              this.imageUrl = `http://localhost:7948/common/download?name=${response.data}`
           },
           beforeUpload (file) {
             if(file){

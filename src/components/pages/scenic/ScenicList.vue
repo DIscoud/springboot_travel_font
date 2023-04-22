@@ -87,7 +87,7 @@
           <el-form-item label="景点照片">
             <!-- <div class="addBrand-container" id="food-add-app" >
                             <div class="container"> -->
-            <el-upload class="avatar-uploader" action="http://localhost:8081/common/upload" :show-file-list="false"
+            <el-upload class="avatar-uploader" action="http://localhost:7948/common/upload" :show-file-list="false"
               :on-success="handleAvatarSuccess" :before-upload="beforeUpload" ref="upload">
               <img v-if="imageUrl" :src="imageUrl" class="avatar" />
               <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -223,11 +223,11 @@ export default {
         },
         //获取照片
         getImage (image) {
-            return `http://localhost:8081/common/download?name=${image}`
+            return `http://localhost:7948/common/download?name=${image}`
         },
         //图片上传
         handleAvatarSuccess (response, file, fileList) {
-            this.imageUrl = `http://localhost:8081/common/download?name=${response.data}`
+            this.imageUrl = `http://localhost:7948/common/download?name=${response.data}`
             this.form.snicImg = response.data
         },
         //图片上传之前验证文件格式

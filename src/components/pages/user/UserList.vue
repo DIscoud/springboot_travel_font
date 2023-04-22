@@ -97,7 +97,7 @@
                     <el-form-item label="头像">
                         <!-- <div class="addBrand-container" id="food-add-app" >
                             <div class="container"> -->
-                        <el-upload class="avatar-uploader" action="http://localhost:8081/common/upload"
+                        <el-upload class="avatar-uploader" action="http://localhost:7948/common/upload"
                             :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeUpload"
                             ref="upload">
                             <img v-if="imageUrl" :src="imageUrl" class="avatar" />
@@ -155,7 +155,7 @@ export default {
                   {
                       value: '1',
                       label: '男'
-                  }, 
+                  },
                   {
                       value: '0',
                       label: '女'
@@ -165,7 +165,7 @@ export default {
                   {
                       value: '1',
                       label: '正常'
-                  }, 
+                  },
                   {
                       value: '0',
                       label: '封禁'
@@ -266,7 +266,7 @@ export default {
         },
         //图片上传
         handleAvatarSuccess (response, file, fileList) {
-            this.imageUrl = `http://localhost:8081/common/download?name=${response.data}`
+            this.imageUrl = `http://localhost:7948/common/download?name=${response.data}`
             this.form.userImg = response.data
         },
         //图片上传之前验证文件格式
@@ -331,12 +331,12 @@ export default {
                     }else{
                         this.doSave();
                     }
-                    
+
                 } else {
                     return false;
                 }
             });
-            
+
         },
 
         //修改按钮
@@ -356,7 +356,6 @@ export default {
                 this.form.userStatus = row.userStatus
                 this.form.userPhone = row.userPhone;
                 this.form.userName = row.userName;
-                // this.isDisabled = true;
             })
         },
         //修改
@@ -376,10 +375,10 @@ export default {
         resetForm() {
             this.$refs.form.resetFields();
         },
-        
-            
+
+
     },
-    
+
     beforeMount() {
         this.post();
     },
