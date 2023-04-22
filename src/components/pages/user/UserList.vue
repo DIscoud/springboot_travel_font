@@ -236,7 +236,7 @@ export default {
         },
         //获取头像
         getImage (image) {
-            return `http://localhost:8081/common/download?name=${image}`
+            return `http://localhost:7948/common/download?name=${image}`
         },
         //重置查询的参数
         resetRuleForm(formName) {
@@ -246,6 +246,7 @@ export default {
                 this.userSex = ''
                 this.userStatus = ''
                 this.post();
+				alert(1111)
             })
         },
         //打开新增用户窗口
