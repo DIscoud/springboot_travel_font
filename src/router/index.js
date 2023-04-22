@@ -8,6 +8,8 @@ import ScenicList from '@/components/pages/scenic/ScenicList.vue'
 import ScenicHot from '@/components/pages/scenic/ScenicHot.vue'
 import Index from '@/components/pages/Index.vue'
 import Login from '@/components/common/Login.vue'
+import Register from '@/components/common/Register.vue'
+import LoginNew from '@/components/common/LoginNew.vue'
 import Upload from '@/components/pages/demo/Upload.vue'
 import Front from '@/components/pages/Front/Front.vue'
 import FoodList from '@/components/pages/food/FoodList.vue'
@@ -25,8 +27,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Home',//主路由
-      component: Home,
+      name: 'LoginNew',//主路由
+      component: LoginNew,
       redirect: 'Index',
       children: [//嵌套子路由
         {
@@ -103,11 +105,19 @@ export default new Router({
       component: Login,
     },
     {
+      path: '/LoginNew',
+      name: 'loginNew',//主路由
+      component: LoginNew,
+    },
+    {
+      path: '/Register',
+      name: 'register',//
+      component: Register,
+    },
+    {
       path: '/Front',
       name: 'front',//主路由
       component: Front,
     }
   ]
 })
-
-
